@@ -16,9 +16,10 @@ class PolymarketAPIClient:
     Класс для взаимодействия с Polymarket API.
     """
     
-    # API endpoints
+    # API endpoints (ИСПРАВЛЕНО)
     BASE_URL = "https://clob.polymarket.com"
     GAMMA_API = "https://gamma-api.polymarket.com"
+    DATA_API = "https://data-api.polymarket.com"  # Новый endpoint для trades
     
     def __init__(self):
         """Инициализация API клиента."""
@@ -39,7 +40,8 @@ class PolymarketAPIClient:
             Список сделок трейдера
         """
         try:
-            url = f"{self.GAMMA_API}/events"
+            # ИСПРАВЛЕНО: используем data-api вместо gamma-api
+            url = f"{self.DATA_API}/trades"
             params = {
                 'maker': trader_address,
                 'limit': limit
@@ -61,7 +63,7 @@ class PolymarketAPIClient:
         Получает информацию о рынке.
         
         Args:
-            market_id: ID рынка
+            market_id: ID рынка (conditionId)
             
         Returns:
             Информация о рынке или None
@@ -170,15 +172,19 @@ class PolymarketAPIClient:
         Returns:
             Обработанные данные сделки
         """
+        # ИСПРАВЛЕНО: новая структура от data-api.polymarket.com
         return {
             'timestamp': datetime.fromtimestamp(trade.get('timestamp', 0)),
-            'market_id': trade.get('market'),
+            'market_id': trade.get('conditionId'),  # ИСПРАВЛЕНО: было 'market'
             'outcome': trade.get('outcome'),  # YES или NO
             'size': float(trade.get('size', 0)),
             'price': float(trade.get('price', 0)),
-            'transaction_hash': trade.get('transaction_hash'),
-            'maker': trade.get('maker'),
-            'side': trade.get('side')  # BUY или SELL
+            'transaction_hash': trade.get('transactionHash'),  # ИСПРАВЛЕНО: было 'transaction_hash'
+            'maker': trade.get('proxyWallet'),  # ИСПРАВЛЕНО: было 'maker'
+            'side': trade.get('side'),  # BUY или SELL
+            'asset': trade.get('asset'),  # Token ID
+            'title': trade.get('title', 'Unknown Market'),  # Название рынка
+            'slug': trade.get('slug', ''),  # Slug рынка
         }
     
     def is_new_trade(self, trade: Dict, last_check_time: datetime) -> bool:
@@ -194,4 +200,3 @@ class PolymarketAPIClient:
         """
         trade_time = datetime.fromtimestamp(trade.get('timestamp', 0))
         return trade_time > last_check_time
-        

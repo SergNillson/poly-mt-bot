@@ -633,3 +633,260 @@ WHERE positions.status = ?]
 2026-03-24 08:48:36,303 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
 2026-03-24 08:48:46,348 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
 2026-03-24 08:48:56,391 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:07:09,755 - __main__ - INFO - ============================================================
+2026-03-26 09:07:09,757 - __main__ - INFO - ЗАПУСК POLYMARKET COPY TRADING BOT
+2026-03-26 09:07:09,757 - __main__ - INFO - ============================================================
+2026-03-26 09:07:09,758 - __main__ - INFO - Трейдер: 0xd84c2b6d65dc596f49c7b6aadd6d74ca91e407b9
+2026-03-26 09:07:09,758 - __main__ - INFO - Копирование: 1.0%
+2026-03-26 09:07:09,758 - __main__ - INFO - Макс. позиция: $100.0
+2026-03-26 09:07:09,759 - __main__ - INFO - Интервал: 60 сек
+2026-03-26 09:07:09,759 - __main__ - INFO - Инициализация компонентов...
+2026-03-26 09:07:09,785 - __main__ - INFO - База данных инициализирована
+2026-03-26 09:07:09,786 - __main__ - INFO - API клиент Polymarket инициализирован
+2026-03-26 09:07:09,792 - src.trading.position_manager - INFO - Инициализирован PositionManager
+2026-03-26 09:07:09,794 - __main__ - INFO - Position Manager инициализирован
+2026-03-26 09:07:09,794 - src.trading.paper_trader - INFO - Инициализирован PaperTrader (копирование: 1.0%, макс. позиция: $100.0)
+2026-03-26 09:07:09,795 - __main__ - INFO - Paper Trader инициализирован
+2026-03-26 09:07:10,904 - src.bot.telegram_bot - INFO - Telegram бот инициализирован
+2026-03-26 09:07:10,905 - __main__ - INFO - Telegram Bot инициализирован
+2026-03-26 09:07:10,905 - src.tracker.trader_tracker - INFO - TraderTracker ініціалізовано для 0xd84c2b...
+2026-03-26 09:07:10,906 - __main__ - INFO - Trader Tracker инициализирован
+2026-03-26 09:07:11,124 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:07:11,130 - __main__ - INFO - Начинаем мониторинг сделок...
+2026-03-26 09:07:11,792 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:07:12,691 - src.bot.telegram_bot - INFO - Обработчики команд настроены
+2026-03-26 09:07:12,692 - src.bot.telegram_bot - INFO - Запуск Telegram бота (polling)...
+2026-03-26 09:07:12,821 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-26 09:07:12,824 - telegram.ext.Application - INFO - Application started
+2026-03-26 09:07:12,866 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-26 09:07:22,986 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:07:26,168 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:07:26,330 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:07:36,221 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:07:46,269 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:07:56,336 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:08:06,397 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:08:11,856 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:08:16,451 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:08:26,506 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:08:32,501 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:08:32,702 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:08:42,546 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:08:52,591 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:09:02,638 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:09:11,921 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:09:12,681 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:09:22,728 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:09:32,776 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:09:42,820 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:09:52,866 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:02,913 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:12,094 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:10:12,958 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:23,003 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:25,950 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:26,128 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:10:29,790 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:29,879 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:10:39,840 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:49,885 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:10:59,927 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:11:09,972 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:11:12,150 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:11:20,021 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:11:30,068 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:11:40,112 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:11:50,156 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:00,202 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:10,241 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:12,224 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:12:20,289 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:30,335 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:40,384 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:50,435 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:12:59,103 - __main__ - INFO - ============================================================
+2026-03-26 09:12:59,104 - __main__ - INFO - ЗАПУСК POLYMARKET COPY TRADING BOT
+2026-03-26 09:12:59,104 - __main__ - INFO - ============================================================
+2026-03-26 09:12:59,105 - __main__ - INFO - Трейдер: 0xd84c2b6d65dc596f49c7b6aadd6d74ca91e407b9
+2026-03-26 09:12:59,107 - __main__ - INFO - Копирование: 1.0%
+2026-03-26 09:12:59,108 - __main__ - INFO - Макс. позиция: $100.0
+2026-03-26 09:12:59,109 - __main__ - INFO - Интервал: 60 сек
+2026-03-26 09:12:59,113 - __main__ - INFO - Инициализация компонентов...
+2026-03-26 09:12:59,145 - __main__ - INFO - База данных инициализирована
+2026-03-26 09:12:59,146 - __main__ - INFO - API клиент Polymarket инициализирован
+2026-03-26 09:12:59,146 - src.trading.position_manager - INFO - Инициализирован PositionManager
+2026-03-26 09:12:59,147 - __main__ - INFO - Position Manager инициализирован
+2026-03-26 09:12:59,147 - src.trading.paper_trader - INFO - Инициализирован PaperTrader (копирование: 1.0%, макс. позиция: $100.0)
+2026-03-26 09:12:59,147 - __main__ - INFO - Paper Trader инициализирован
+2026-03-26 09:13:00,136 - src.bot.telegram_bot - INFO - Telegram бот инициализирован
+2026-03-26 09:13:00,137 - __main__ - INFO - Telegram Bot инициализирован
+2026-03-26 09:13:00,137 - src.tracker.trader_tracker - INFO - TraderTracker ініціалізовано для 0xd84c2b...
+2026-03-26 09:13:00,137 - __main__ - INFO - Trader Tracker инициализирован
+2026-03-26 09:13:00,332 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:13:00,337 - __main__ - INFO - Начинаем мониторинг сделок...
+2026-03-26 09:13:00,895 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:13:01,836 - src.bot.telegram_bot - INFO - Обработчики команд настроены
+2026-03-26 09:13:01,836 - src.bot.telegram_bot - INFO - Запуск Telegram бота (polling)...
+2026-03-26 09:13:01,947 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-26 09:13:01,950 - telegram.ext.Application - INFO - Application started
+2026-03-26 09:13:01,987 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-26 09:13:12,112 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:13:22,161 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:13:37,918 - __main__ - INFO - ============================================================
+2026-03-26 09:13:37,919 - __main__ - INFO - ЗАПУСК POLYMARKET COPY TRADING BOT
+2026-03-26 09:13:37,919 - __main__ - INFO - ============================================================
+2026-03-26 09:13:37,919 - __main__ - INFO - Трейдер: 0xd84c2b6d65dc596f49c7b6aadd6d74ca91e407b9
+2026-03-26 09:13:37,919 - __main__ - INFO - Копирование: 1.0%
+2026-03-26 09:13:37,920 - __main__ - INFO - Макс. позиция: $100.0
+2026-03-26 09:13:37,920 - __main__ - INFO - Интервал: 60 сек
+2026-03-26 09:13:37,921 - __main__ - INFO - Инициализация компонентов...
+2026-03-26 09:13:38,203 - __main__ - INFO - База данных инициализирована
+2026-03-26 09:13:38,204 - __main__ - INFO - API клиент Polymarket инициализирован
+2026-03-26 09:13:38,204 - src.trading.position_manager - INFO - Инициализирован PositionManager
+2026-03-26 09:13:38,205 - __main__ - INFO - Position Manager инициализирован
+2026-03-26 09:13:38,205 - src.trading.paper_trader - INFO - Инициализирован PaperTrader (копирование: 1.0%, макс. позиция: $100.0)
+2026-03-26 09:13:38,205 - __main__ - INFO - Paper Trader инициализирован
+2026-03-26 09:13:39,157 - src.bot.telegram_bot - INFO - Telegram бот инициализирован
+2026-03-26 09:13:39,158 - __main__ - INFO - Telegram Bot инициализирован
+2026-03-26 09:13:39,158 - src.tracker.trader_tracker - INFO - TraderTracker ініціалізовано для 0xd84c2b...
+2026-03-26 09:13:39,158 - __main__ - INFO - Trader Tracker инициализирован
+2026-03-26 09:13:39,360 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:13:39,362 - __main__ - INFO - Начинаем мониторинг сделок...
+2026-03-26 09:13:40,090 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:13:40,981 - src.bot.telegram_bot - INFO - Обработчики команд настроены
+2026-03-26 09:13:40,982 - src.bot.telegram_bot - INFO - Запуск Telegram бота (polling)...
+2026-03-26 09:13:41,103 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-26 09:13:41,107 - telegram.ext.Application - INFO - Application started
+2026-03-26 09:13:41,150 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-26 09:13:51,272 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:14:01,323 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:14:11,367 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:14:21,408 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:14:31,455 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:14:40,167 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:14:41,498 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:14:51,540 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:15:01,584 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:15:11,630 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:15:21,673 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:15:31,716 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:15:40,237 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:15:41,759 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:15:51,802 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:16:01,841 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:16:11,884 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:16:21,929 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:16:31,973 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:16:40,417 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:16:42,017 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:16:52,065 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:17:02,105 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:17:12,150 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:17:22,194 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:17:32,238 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:17:40,485 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:17:42,281 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:17:52,325 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:02,369 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:12,416 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:22,460 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:32,503 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:40,542 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:18:42,545 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:44,171 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:18:44,365 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:18:54,219 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:19:04,263 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:19:14,305 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:19:24,350 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:19:34,395 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:19:40,684 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:19:44,438 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:19:54,482 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:20:04,525 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:20:14,568 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:20:24,614 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:20:34,657 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:20:40,752 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:20:44,697 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:20:54,741 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:21:04,785 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:21:14,828 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:21:24,871 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:21:34,914 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:21:40,812 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:21:44,955 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:21:54,998 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:22:05,042 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:22:15,086 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:22:25,127 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:22:35,171 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:22:41,021 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:22:45,220 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:22:55,266 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:23:05,311 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:23:15,354 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:23:25,395 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:23:35,436 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:23:41,086 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:23:45,487 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:23:55,532 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:24:05,579 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:24:15,624 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:24:25,663 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:24:35,704 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:24:41,134 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:24:45,752 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:24:55,793 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:25:05,834 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:25:15,878 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:30:34,957 - __main__ - INFO - ============================================================
+2026-03-26 09:30:34,958 - __main__ - INFO - ЗАПУСК POLYMARKET COPY TRADING BOT
+2026-03-26 09:30:34,958 - __main__ - INFO - ============================================================
+2026-03-26 09:30:34,958 - __main__ - INFO - Трейдер: 0xd84c2b6d65dc596f49c7b6aadd6d74ca91e407b9
+2026-03-26 09:30:34,959 - __main__ - INFO - Копирование: 1.0%
+2026-03-26 09:30:34,963 - __main__ - INFO - Макс. позиция: $100.0
+2026-03-26 09:30:34,964 - __main__ - INFO - Интервал: 60 сек
+2026-03-26 09:30:34,964 - __main__ - INFO - Инициализация компонентов...
+2026-03-26 09:30:34,992 - __main__ - INFO - База данных инициализирована
+2026-03-26 09:30:34,993 - __main__ - INFO - API клиент Polymarket инициализирован
+2026-03-26 09:30:34,993 - src.trading.position_manager - INFO - Инициализирован PositionManager
+2026-03-26 09:30:34,993 - __main__ - INFO - Position Manager инициализирован
+2026-03-26 09:30:34,994 - src.trading.paper_trader - INFO - Инициализирован PaperTrader (копирование: 1.0%, макс. позиция: $100.0)
+2026-03-26 09:30:34,994 - __main__ - INFO - Paper Trader инициализирован
+2026-03-26 09:30:36,036 - src.bot.telegram_bot - INFO - Telegram бот инициализирован
+2026-03-26 09:30:36,040 - __main__ - INFO - Telegram Bot инициализирован
+2026-03-26 09:30:36,041 - src.tracker.trader_tracker - INFO - TraderTracker ініціалізовано для 0xd84c2b...
+2026-03-26 09:30:36,046 - __main__ - INFO - Trader Tracker инициализирован
+2026-03-26 09:30:36,259 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:30:36,265 - __main__ - INFO - Начинаем мониторинг сделок...
+2026-03-26 09:30:36,822 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:30:37,687 - src.bot.telegram_bot - INFO - Обработчики команд настроены
+2026-03-26 09:30:37,687 - src.bot.telegram_bot - INFO - Запуск Telegram бота (polling)...
+2026-03-26 09:30:37,804 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-26 09:30:37,806 - telegram.ext.Application - INFO - Application started
+2026-03-26 09:30:37,844 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-26 09:30:47,964 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:30:58,007 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:31:08,051 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:31:18,100 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:31:28,151 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:31:36,890 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:31:38,195 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:31:48,240 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:31:58,289 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:08,335 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:18,383 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:28,429 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:36,934 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:32:38,475 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:48,520 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:53,526 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:32:53,700 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-26 09:33:03,575 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:33:13,616 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:33:23,662 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:33:33,707 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:33:36,978 - src.polymarket.api_client - INFO - Получено 50 сделок для трейдера 0xd84c2b...
+2026-03-26 09:33:43,750 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-26 09:33:53,802 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"

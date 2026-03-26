@@ -68,10 +68,7 @@ class PaperTrader:
                              f"${self.max_position_size:.2f}. Используется максимум.")
                 copy_amount = self.max_position_size
             
-            # Проверяем минимальный размер
-            if copy_amount < 1.0:
-                logger.warning(f"Размер позиции ${copy_amount:.2f} слишком мал. Пропускаем.")
-                return None
+            # ФИЛЬТР МИНИМАЛЬНОГО РАЗМЕРА УБРАН - копируем всё
             
             # Открываем позицию
             position_id = self.position_manager.open_position(
@@ -97,33 +94,15 @@ class PaperTrader:
     def should_copy_trade(self, trade_data: Dict) -> bool:
         """
         Определяет, нужно ли копировать данную сделку.
-        Можно добавить фильтры (минимальный размер, определенные рынки и т.д.)
+        КОПИРУЕТ ВСЕ СДЕЛКИ БЕЗ ФИЛЬТРОВ.
         
         Args:
             trade_data: Данные о сделке
             
         Returns:
-            True если сделку нужно копировать
+            True - копируем все сделки
         """
-        parsed_trade = trade_data['parsed_trade']
-        
-        # Проверка 1: Минимальный размер сделки
-        min_trade_size = 10.0  # USD
-        if parsed_trade['size'] < min_trade_size:
-            logger.debug(f"Сделка слишком мала (${parsed_trade['size']:.2f} < ${min_trade_size})")
-            return False
-        
-        # Проверка 2: Только покупки (не продажи)
-        # Можно настроить в зависимости от стратегии
-        if parsed_trade.get('side') == 'SELL':
-            logger.debug("Пропускаем сделку на продажу")
-            return False
-        
-        # Можно добавить больше проверок:
-        # - Фильтр по определенным рынкам
-        # - Ограничение на количество одновременно открытых позиций
-        # - Фильтр по времени суток
-        
+        # Копируем ВСЕ сделки без фильтров
         return True
     
     def get_statistics(self) -> Dict:
