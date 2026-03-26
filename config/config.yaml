@@ -1,0 +1,32 @@
+# Конфигурация бота для копирования сделок на Polymarket
+
+# Режим работы: paper (виртуальная торговля) или live (реальная торговля - пока не реализовано)
+mode: paper
+
+# Адрес трейдера, которого отслеживаем
+target_trader:
+  address: "0x63ce342161250d705dc0b16df89036c8e5f9ba9a"
+  
+# Настройки paper trading (виртуальной торговли)
+paper_trading:
+  initial_balance: 40.0  # Начальный виртуальный баланс в USD
+  
+# Настройки мониторинга
+monitoring:
+  check_interval: 60  # Интервал проверки новых сделок в секундах
+  
+# Ограничения на размер ставок
+limits:
+  min_bet_size: 0.01  # Минимальный размер ставки в USD
+  max_bet_size: 10.0  # Максимальный размер ставки в USD
+  max_position_percent: 25.0  # Максимальный процент баланса на одну позицию
+  
+# Настройки логирования
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  file: logs/bot.log
+  console: true
+  
+# Настройки базы данных
+database:
+  path: data/paper_trades.db

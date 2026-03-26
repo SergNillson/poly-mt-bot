@@ -1,0 +1,635 @@
+2026-03-24 08:36:15,589 - __main__ - INFO - ============================================================
+2026-03-24 08:36:15,607 - __main__ - INFO - ============================================================
+2026-03-24 08:39:38,319 - __main__ - INFO - ============================================================
+2026-03-24 08:39:38,333 - __main__ - INFO - ============================================================
+2026-03-24 08:39:43,572 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:39:45,315 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-24 08:39:45,322 - telegram.ext.Application - INFO - Application started
+2026-03-24 08:39:45,357 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-24 08:39:55,533 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:01,116 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:01,271 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:40:06,360 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:06,367 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 92, in cmd_stats
+    stats = self.paper_trader.get_statistics()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\paper_trader.py", line 136, in get_statistics
+    pnl_stats = self.position_manager.get_total_pnl()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 207, in get_total_pnl
+    closed_positions = self.database.get_closed_positions()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_closed_positions'
+2026-03-24 08:40:13,278 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:13,286 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 111, in cmd_positions
+    open_positions = self.paper_trader.position_manager.get_open_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 147, in get_open_positions
+    return self.database.get_open_positions()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Database' object has no attribute 'get_open_positions'
+2026-03-24 08:40:16,852 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:17,067 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:40:26,987 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:37,033 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:47,079 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:40:57,124 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:41:07,169 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:41:17,215 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:41:27,256 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:41:37,299 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:41:47,347 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:41:57,388 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:42:07,430 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:42:17,476 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:45:10,447 - __main__ - INFO - ============================================================
+2026-03-24 08:45:10,460 - __main__ - INFO - ============================================================
+2026-03-24 08:45:11,948 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:45:13,680 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-24 08:45:13,685 - telegram.ext.Application - INFO - Application started
+2026-03-24 08:45:13,728 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-24 08:45:23,862 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:45:26,871 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:45:27,025 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:45:31,430 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:45:31,438 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\base.py", line 2289, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+AttributeError: type object 'Position' has no attribute 'status'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 92, in cmd_stats
+    stats = self.paper_trader.get_statistics()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\paper_trader.py", line 136, in get_statistics
+    pnl_stats = self.position_manager.get_total_pnl()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 207, in get_total_pnl
+    closed_positions = self.database.get_closed_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\database\database.py", line 133, in get_closed_positions
+    return session.query(Position).filter_by(status='closed').all()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 1992, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\base.py", line 2291, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+        'Entity namespace for "%s" has no property "%s"' % (entity, key)
+    ) from err
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "positions" has no property "status"
+2026-03-24 08:45:35,660 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:45:35,669 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\base.py", line 2289, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+AttributeError: type object 'Position' has no attribute 'status'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 111, in cmd_positions
+    open_positions = self.paper_trader.position_manager.get_open_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 147, in get_open_positions
+    return self.database.get_open_positions()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\database\database.py", line 126, in get_open_positions
+    return session.query(Position).filter_by(status='open').all()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 1992, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\base.py", line 2291, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+        'Entity namespace for "%s" has no property "%s"' % (entity, key)
+    ) from err
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "positions" has no property "status"
+2026-03-24 08:45:45,715 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:45:55,762 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:46:05,807 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:46:15,853 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:46:25,901 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:46:35,950 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:46:45,993 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:46:56,037 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:06,083 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:16,158 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:26,207 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:33,110 - __main__ - INFO - ============================================================
+2026-03-24 08:47:33,124 - __main__ - INFO - ============================================================
+2026-03-24 08:47:34,460 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:47:36,205 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getMe "HTTP/1.1 200 OK"
+2026-03-24 08:47:36,211 - telegram.ext.Application - INFO - Application started
+2026-03-24 08:47:36,255 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/deleteWebhook "HTTP/1.1 200 OK"
+2026-03-24 08:47:46,395 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:46,441 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:46,447 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: positions.exit_price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 92, in cmd_stats
+    stats = self.paper_trader.get_statistics()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\paper_trader.py", line 136, in get_statistics
+    pnl_stats = self.position_manager.get_total_pnl()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 207, in get_total_pnl
+    closed_positions = self.database.get_closed_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\database\database.py", line 133, in get_closed_positions
+    return session.query(Position).filter_by(status='closed').all()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: positions.exit_price
+[SQL: SELECT positions.id AS positions_id, positions.paper_trade_id AS positions_paper_trade_id, positions.market_id AS positions_market_id, positions.market_title AS positions_market_title, positions.outcome AS positions_outcome, positions.amount AS positions_amount, positions.entry_price AS positions_entry_price, positions.current_price AS positions_current_price, positions.exit_price AS positions_exit_price, positions.unrealized_pnl AS positions_unrealized_pnl, positions.pnl AS positions_pnl, positions.status AS positions_status, positions.opened_at AS positions_opened_at, positions.closed_at AS positions_closed_at, positions.updated_at AS positions_updated_at 
+FROM positions 
+WHERE positions.status = ?]
+[parameters: ('closed',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-03-24 08:47:49,364 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:49,370 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: positions.exit_price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 111, in cmd_positions
+    open_positions = self.paper_trader.position_manager.get_open_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 147, in get_open_positions
+    return self.database.get_open_positions()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\database\database.py", line 126, in get_open_positions
+    return session.query(Position).filter_by(status='open').all()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: positions.exit_price
+[SQL: SELECT positions.id AS positions_id, positions.paper_trade_id AS positions_paper_trade_id, positions.market_id AS positions_market_id, positions.market_title AS positions_market_title, positions.outcome AS positions_outcome, positions.amount AS positions_amount, positions.entry_price AS positions_entry_price, positions.current_price AS positions_current_price, positions.exit_price AS positions_exit_price, positions.unrealized_pnl AS positions_unrealized_pnl, positions.pnl AS positions_pnl, positions.status AS positions_status, positions.opened_at AS positions_opened_at, positions.closed_at AS positions_closed_at, positions.updated_at AS positions_updated_at 
+FROM positions 
+WHERE positions.status = ?]
+[parameters: ('open',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-03-24 08:47:51,815 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:52,061 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/sendMessage "HTTP/1.1 200 OK"
+2026-03-24 08:47:54,214 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:54,223 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: positions.exit_price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 92, in cmd_stats
+    stats = self.paper_trader.get_statistics()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\paper_trader.py", line 136, in get_statistics
+    pnl_stats = self.position_manager.get_total_pnl()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 207, in get_total_pnl
+    closed_positions = self.database.get_closed_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\database\database.py", line 133, in get_closed_positions
+    return session.query(Position).filter_by(status='closed').all()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: positions.exit_price
+[SQL: SELECT positions.id AS positions_id, positions.paper_trade_id AS positions_paper_trade_id, positions.market_id AS positions_market_id, positions.market_title AS positions_market_title, positions.outcome AS positions_outcome, positions.amount AS positions_amount, positions.entry_price AS positions_entry_price, positions.current_price AS positions_current_price, positions.exit_price AS positions_exit_price, positions.unrealized_pnl AS positions_unrealized_pnl, positions.pnl AS positions_pnl, positions.status AS positions_status, positions.opened_at AS positions_opened_at, positions.closed_at AS positions_closed_at, positions.updated_at AS positions_updated_at 
+FROM positions 
+WHERE positions.status = ?]
+[parameters: ('closed',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-03-24 08:47:56,107 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:47:56,115 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: positions.exit_price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_application.py", line 1315, in process_update
+    await coroutine
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 159, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\bot\telegram_bot.py", line 111, in cmd_positions
+    open_positions = self.paper_trader.position_manager.get_open_positions()
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\trading\position_manager.py", line 147, in get_open_positions
+    return self.database.get_open_positions()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\Desktop\copy-bot\pm-copy-bot-main\src\database\database.py", line 126, in get_open_positions
+    return session.query(Position).filter_by(status='open').all()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: positions.exit_price
+[SQL: SELECT positions.id AS positions_id, positions.paper_trade_id AS positions_paper_trade_id, positions.market_id AS positions_market_id, positions.market_title AS positions_market_title, positions.outcome AS positions_outcome, positions.amount AS positions_amount, positions.entry_price AS positions_entry_price, positions.current_price AS positions_current_price, positions.exit_price AS positions_exit_price, positions.unrealized_pnl AS positions_unrealized_pnl, positions.pnl AS positions_pnl, positions.status AS positions_status, positions.opened_at AS positions_opened_at, positions.closed_at AS positions_closed_at, positions.updated_at AS positions_updated_at 
+FROM positions 
+WHERE positions.status = ?]
+[parameters: ('open',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-03-24 08:48:06,161 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:48:16,209 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:48:26,255 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:48:36,303 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:48:46,348 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
+2026-03-24 08:48:56,391 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8603692523:AAFvKIMWJ448N7coxNy4qH7sDDBBwjONeIg/getUpdates "HTTP/1.1 200 OK"
