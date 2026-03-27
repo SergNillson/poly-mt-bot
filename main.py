@@ -22,18 +22,23 @@ from src.bot.telegram_bot import TelegramBot
 
 load_dotenv()
 
+
+# Настройка логирования
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('bot.log', encoding='utf-8'),
-        logging.StreamHandler(sys.stdout)
-    ]
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
-logger = logging.getLogger(__name__)
-
 
 async def main():
+    # Отключаем лишние логи
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("telegram").setLevel(logging.WARNING)
+    logging.getLogger("telegram.ext").setLevel(logging.WARNING)
+    logging.getLogger("src.polymarket.api_client").setLevel(logging.WARNING)
+    logging.getLogger("src.bot.telegram_bot").setLevel(logging.WARNING)
+    logging.getLogger("apscheduler").setLevel(logging.WARNING)
+    
+    logger = logging.getLogger(__name__)
     logger.info("=" * 60)
     logger.info("ЗАПУСК POLYMARKET COPY TRADING BOT")
     logger.info("=" * 60)
@@ -54,37 +59,32 @@ async def main():
     max_position_size = float(os.getenv('MAX_POSITION_SIZE', '100.0'))
     check_interval = int(os.getenv('CHECK_INTERVAL', '60'))
 
-    logger.info(f"Трейдер: {tracked_trader_address}")
-    logger.info(f"Копирование: {copy_ratio * 100}%")
-    logger.info(f"Макс. позиция: ${max_position_size}")
-    logger.info(f"Интервал: {check_interval} сек")
-    logger.info("Инициализация компонентов...")
+    logger.info(f"📍 Трейдер: {tracked_trader_address}")
+    logger.info(f"📊 Копирование: {copy_ratio * 100}%")
+    logger.info(f"💰 Макс. позиция: ${max_position_size}")
+    logger.info(f"⏱️  Интервал проверки: {check_interval} сек")
+    logger.info("=" * 60)
 
     os.makedirs('data', exist_ok=True)
     database = Database('data/trading.db')
-    logger.info("База данных инициализирована")
 
     api_client = PolymarketAPIClient()
-    logger.info("API клиент Polymarket инициализирован")
-
     position_manager = PositionManager(database, api_client)
-    logger.info("Position Manager инициализирован")
 
     paper_trader = PaperTrader(
         position_manager=position_manager,
         database=database,
         api_client=api_client,
+        trader_address=tracked_trader_address,  # ⬅️ ДОБАВЛЕНО
         copy_ratio=copy_ratio,
         max_position_size=max_position_size
     )
-    logger.info("Paper Trader инициализирован")
 
     telegram_bot = TelegramBot(
         token=telegram_token,
         chat_id=telegram_chat_id,
         paper_trader=paper_trader
     )
-    logger.info("Telegram Bot инициализирован")
 
     tracker = TraderTracker(
         trader_address=tracked_trader_address,
@@ -92,59 +92,78 @@ async def main():
         database=database,
         check_interval=check_interval
     )
-    logger.info("Trader Tracker инициализирован")
 
-    await telegram_bot.send_message(
-        "Bot started!\n\n"
-        f"Trader: <code>{tracked_trader_address}</code>\n\n"
-        f"Copy ratio: {copy_ratio * 100}%\n"
-        f"Max position: ${max_position_size}\n"
-        f"Interval: {check_interval} sec"
-    )
+    # Показываем последние 3 сделки трейдера при старте
+    logger.info("🔍 Проверяю последние сделки трейдера...")
+    recent_trades = api_client.get_trader_trades(tracked_trader_address, limit=3)
+    
+    if recent_trades:
+        logger.info(f"📋 Найдено последних сделок: {len(recent_trades)}")
+        for trade in recent_trades[:3]:
+            parsed = api_client.parse_trade_data(trade)
+            logger.info(
+                f"  └─ [{parsed['side']}] {parsed['title'][:35]}... "
+                f"{parsed['outcome']} @ ${parsed['price']:.2f} | "
+                f"${parsed['size']:.2f} | {parsed['timestamp'].strftime('%Y-%m-%d %H:%M')}"
+            )
+    else:
+        logger.warning("⚠️  Сделки не найдены (возможно, неверный адрес трейдера)")
+    
+    logger.info("=" * 60)
 
+    # Показываем текущую статистику
+    stats = paper_trader.get_statistics()
+    logger.info(f"💼 Текущая статистика:")
+    logger.info(f"  └─ Открытых позиций: {stats['open_positions']}")
+    logger.info(f"  └─ Закрытых позиций: {stats['closed_positions']}")
+    logger.info(f"  └─ Общий P&L: ${stats['total_pnl']:.2f}")
+    logger.info("=" * 60)
+
+    # Запускаем Telegram бота
     bot_task = asyncio.create_task(telegram_bot.start_polling())
 
-    logger.info("Начинаем мониторинг сделок...")
+    logger.info("🚀 Начинаем мониторинг сделок...")
+    logger.info("=" * 60)
+
+    check_count = 0
 
     try:
         while True:
             try:
+                check_count += 1
+                logger.info(f"🔄 Проверка #{check_count} — {asyncio.get_event_loop().time():.0f}s")
+                
                 new_trades = await tracker.check_for_new_trades()
 
-                if new_trades:
-                    logger.info(f"Новых сделок: {len(new_trades)}")
+                if new_trades['buys'] or new_trades['sells']:
+                    logger.info(f"🆕 Новых покупок: {len(new_trades['buys'])}, продаж: {len(new_trades['sells'])}")
+                else:
+                    logger.info("   └─ Новых сделок нет")
 
-                    for trade_data in new_trades:
-                        await telegram_bot.notify_new_trade(trade_data)
+                # Обрабатываем покупки
+                for trade_data in new_trades['buys']:
+                    if paper_trader.should_copy_trade(trade_data):
+                        paper_trader.copy_buy(trade_data)
 
-                        if paper_trader.should_copy_trade(trade_data):
-                            position_id = paper_trader.copy_trade(trade_data)
+                # Обрабатываем продажи
+                for trade_data in new_trades['sells']:
+                    paper_trader.copy_sell(trade_data)
 
-                            if position_id:
-                                parsed = trade_data['parsed_trade']
-                                copy_amount = min(
-                                    parsed['size'] * copy_ratio,
-                                    max_position_size
-                                )
-                                await telegram_bot.notify_position_opened(
-                                    position_id, trade_data, copy_amount
-                                )
-                        else:
-                            logger.info("Сделка не соответствует критериям копирования")
+                # Показываем статус открытых позиций каждые 5 проверок
+                if check_count % 5 == 0:
+                    stats = paper_trader.get_statistics()
+                    logger.info(f"📊 Статус: {stats['open_positions']} открытых | P&L: ${stats['total_pnl']:.2f}")
 
-                position_manager.update_positions_with_current_prices()
                 await asyncio.sleep(check_interval)
 
             except Exception as e:
-                logger.error(f"Ошибка в основном цикле: {e}", exc_info=True)
+                logger.error(f"❌ Ошибка в основном цикле: {e}", exc_info=True)
                 await asyncio.sleep(check_interval)
 
     except KeyboardInterrupt:
-        logger.info("Остановка...")
-        await telegram_bot.send_message("Bot stopped")
-        paper_trader.print_statistics()
+        logger.info("⏸️  Остановка...")
         await telegram_bot.stop_polling()
-        logger.info("Бот остановлен")
+        logger.info("✅ Бот остановлен")
 
 
 if __name__ == "__main__":

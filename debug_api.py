@@ -1,19 +1,14 @@
 from src.polymarket.api_client import PolymarketAPIClient
 
 api = PolymarketAPIClient()
-trader = "0xb27bc932bf8110d8f78e55da7d5f0497a18b5b82"
+trades = api.get_trader_trades('0xb27bc932bf8110d8f78e55da7d5f0497a18b5b82', limit=5)
 
-print(f"Получение сделок трейдера {trader}...\n")
-trades = api.get_trader_trades(trader, limit=5)
+print(f"Найдено сделок: {len(trades)}\n")
 
-if trades:
-    print(f"✅ Найдено {len(trades)} сделок:\n")
-    for i, trade in enumerate(trades, 1):
-        parsed = api.parse_trade_data(trade)
-        print(f"{i}. {parsed['title']}")
-        print(f"   {parsed['side']} {parsed['outcome']} @ ${parsed['price']:.3f}")
-        print(f"   Размер: ${parsed['size']:.2f}")
-        print(f"   Время: {parsed['timestamp']}")
-        print()
-else:
-    print("❌ Сделки не найдены")
+for trade in trades[:5]:
+    parsed = api.parse_trade_data(trade)
+    print(f"[{parsed['side']}] {parsed['title'][:40]}")
+    print(f"  Outcome: {parsed['outcome']} @ ${parsed['price']:.2f}")
+    print(f"  Size: ${parsed['size']:.2f}")
+    print(f"  Time: {parsed['timestamp']}")
+    print()

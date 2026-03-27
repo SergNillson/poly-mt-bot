@@ -1,11 +1,12 @@
 """
-Модуль для управления торговыми позициями.
-Отвечает за открытие, закрытие позиций и расчет P&L.
+Управление позициями в paper trading режиме.
+Хранение, обновление и расчёт P&L для открытых позиций.
 """
 
 import logging
-from typing import Optional, Dict, List
+from typing import Optional, List, Dict
 from datetime import datetime
+
 from src.database.database import Database
 from src.polymarket.api_client import PolymarketAPIClient
 
@@ -14,214 +15,150 @@ logger = logging.getLogger(__name__)
 
 class PositionManager:
     """
-    Управляет торговыми позициями: открытие, закрытие, расчет прибыли/убытка.
+    Управляет бумажными позициями (paper trading).
     """
-    
+
     def __init__(self, database: Database, api_client: PolymarketAPIClient):
-        """
-        Инициализация менеджера позиций.
-        
-        Args:
-            database: База данных для хранения позиций
-            api_client: API клиент для получения текущих цен
-        """
         self.database = database
         self.api_client = api_client
         logger.info("Инициализирован PositionManager")
-    
-    def open_position(self, 
-                     market_id: str,
-                     market_title: str,
-                     outcome: str,
-                     amount: float,
-                     entry_price: float,
-                     tracked_trade_id: int) -> Optional[int]:
+
+    def open_position(
+        self,
+        market_id: str,
+        market_title: str,
+        outcome: str,
+        entry_price: float,
+        size: float,
+        trader_tx_hash: Optional[str] = None
+    ) -> int:
         """
         Открывает новую позицию.
+        """
+        position_id = self.database.add_position(
+            market_id=market_id,
+            market_title=market_title,
+            outcome=outcome,
+            amount=size,
+            entry_price=entry_price
+        )
         
-        Args:
-            market_id: ID рынка
-            market_title: Название рынка
-            outcome: YES или NO
-            amount: Размер позиции в USD
-            entry_price: Цена входа
-            tracked_trade_id: ID сделки трейдера, которую копируем
-            
-        Returns:
-            ID созданной позиции или None при ошибке
+        logger.debug(f"Открыта позиция ID={position_id}: {market_id[:8]}... {outcome}")
+        
+        return position_id
+
+    def close_position(
+        self,
+        position_id: int,
+        exit_price: float,
+        reason: str = "manual"
+    ) -> Optional[Dict]:
         """
-        try:
-            position_id = self.database.add_position(
-                market_id=market_id,
-                market_title=market_title,
-                outcome=outcome,
-                amount=amount,
-                entry_price=entry_price,
-                tracked_trade_id=tracked_trade_id
-            )
-            
-            logger.info(f"✅ Открыта позиция #{position_id}")
-            logger.info(f"   Рынок: {market_title}")
-            logger.info(f"   {outcome} @ ${entry_price:.3f}")
-            logger.info(f"   Размер: ${amount:.2f}")
-            
-            return position_id
-            
-        except Exception as e:
-            logger.error(f"Ошибка при открытии позиции: {e}", exc_info=True)
-            return None
-    
-    def close_position(self, position_id: int, exit_price: float, reason: str = "manual") -> bool:
-        """
-        Закрывает позицию.
+        Закрывает позицию и рассчитывает P&L.
         
         Args:
             position_id: ID позиции
             exit_price: Цена закрытия
-            reason: Причина закрытия (manual, stop_loss, take_profit, market_closed)
-            
-        Returns:
-            True если позиция успешно закрыта
-        """
-        try:
-            position = self.database.get_position(position_id)
-            if not position:
-                logger.error(f"Позиция #{position_id} не найдена")
-                return False
-            
-            if position.status != "open":
-                logger.warning(f"Позиция #{position_id} уже закрыта")
-                return False
-            
-            # Рассчитываем P&L
-            pnl = self.calculate_pnl(position.amount, position.entry_price, exit_price)
-            
-            # Закрываем позицию в БД
-            success = self.database.close_position(
-                position_id=position_id,
-                exit_price=exit_price,
-                pnl=pnl
-            )
-            
-            if success:
-                pnl_sign = "📈" if pnl >= 0 else "📉"
-                logger.info(f"{pnl_sign} Закрыта позиция #{position_id}")
-                logger.info(f"   Рынок: {position.market_title}")
-                logger.info(f"   Вход: ${position.entry_price:.3f} → Выход: ${exit_price:.3f}")
-                logger.info(f"   P&L: ${pnl:+.2f}")
-                logger.info(f"   Причина: {reason}")
-            
-            return success
-            
-        except Exception as e:
-            logger.error(f"Ошибка при закрытии позиции: {e}", exc_info=True)
-            return False
-    
-    def calculate_pnl(self, amount: float, entry_price: float, exit_price: float) -> float:
-        """
-        Рассчитывает прибыль/убыток позиции.
-        
-        Args:
-            amount: Размер позиции в USD
-            entry_price: Цена входа
-            exit_price: Цена выхода
-            
-        Returns:
-            P&L в USD
-        """
-        # Количество контрактов = amount / entry_price
-        contracts = amount / entry_price
-        
-        # P&L = contracts * (exit_price - entry_price)
-        pnl = contracts * (exit_price - entry_price)
-        
-        return pnl
-    
-    def get_open_positions(self) -> List:
-        """
-        Получает все открытые позиции.
+            reason: Причина (sell/resolved)
         
         Returns:
-            Список открытых позиций
+            Данные закрытой позиции с P&L
         """
-        return self.database.get_open_positions()
-    
-    def get_position_current_price(self, position) -> Optional[float]:
-        """
-        Получает текущую цену для позиции.
-        
-        Args:
-            position: Объект позиции из БД
-            
-        Returns:
-            Текущая цена или None
-        """
-        # Здесь нужно получить token_id из market_id и outcome
-        # Это зависит от структуры API Polymarket
-        # Упрощенная версия:
-        try:
-            market_info = self.api_client.get_market_info(position.market_id)
-            if not market_info:
-                return None
-            
-            # Ищем токен для нужного outcome
-            tokens = market_info.get('tokens', [])
-            for token in tokens:
-                if token.get('outcome') == position.outcome:
-                    token_id = token.get('token_id')
-                    return self.api_client.get_current_price(token_id)
-            
+        position = self.database.get_position(position_id)
+        if not position:
+            logger.error(f"Позиция ID={position_id} не найдена в БД!")
             return None
-            
-        except Exception as e:
-            logger.error(f"Ошибка при получении текущей цены: {e}")
-            return None
-    
-    def update_positions_with_current_prices(self):
-        """
-        Обновляет текущие цены и нереализованный P&L для всех открытых позиций.
-        """
-        open_positions = self.get_open_positions()
-        
-        for position in open_positions:
-            current_price = self.get_position_current_price(position)
-            
-            if current_price:
-                unrealized_pnl = self.calculate_pnl(
-                    position.amount,
-                    position.entry_price,
-                    current_price
-                )
-                
-                logger.debug(f"Позиция #{position.id}: текущая цена ${current_price:.3f}, "
-                           f"нереализованный P&L: ${unrealized_pnl:+.2f}")
-    
-    def get_total_pnl(self) -> Dict[str, float]:
-        """
-        Возвращает общую статистику по P&L.
-        
-        Returns:
-            Словарь с realized_pnl и unrealized_pnl
-        """
-        # Реализованный P&L (закрытые позиции)
-        closed_positions = self.database.get_closed_positions()
-        realized_pnl = sum(pos.pnl for pos in closed_positions if pos.pnl)
-        
-        # Нереализованный P&L (открытые позиции)
-        open_positions = self.get_open_positions()
-        unrealized_pnl = 0.0
-        
-        for position in open_positions:
-            current_price = self.get_position_current_price(position)
-            if current_price:
-                unrealized_pnl += self.calculate_pnl(
-                    position.amount,
-                    position.entry_price,
-                    current_price
-                )
-        
+
+        pnl = (exit_price - position.entry_price) * position.amount
+        pnl_percent = ((exit_price - position.entry_price) / position.entry_price) * 100
+
+        self.database.close_position(
+            position_id=position_id,
+            exit_price=exit_price,
+            pnl=pnl
+        )
+
         return {
-            'realized_pnl': realized_pnl,
-            'unrealized_pnl': unrealized_pnl,
-            'total_pnl': realized_pnl + unrealized_pnl
+            'position_id': position_id,
+            'market_title': position.market_title,
+            'outcome': position.outcome,
+            'entry_price': position.entry_price,
+            'exit_price': exit_price,
+            'size': position.amount,
+            'pnl': pnl,
+            'pnl_percent': pnl_percent,
+            'reason': reason
+        }
+
+    def update_position_size(self, position_id: int, new_size: float):
+        """
+        Обновляет размер позиции (для частичного закрытия).
+        
+        Args:
+            position_id: ID позиции
+            new_size: Новый размер позиции
+        """
+        from src.database.models import Position
+        
+        session = self.database.get_session()
+        try:
+            position = session.query(Position).filter_by(id=position_id).first()
+            if position:
+                old_size = position.amount
+                position.amount = new_size
+                session.commit()
+                logger.debug(f"Обновлён размер позиции ID={position_id}: {old_size:.2f} → {new_size:.2f}")
+            else:
+                logger.error(f"Позиция ID={position_id} не найдена для обновления размера")
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении размера позиции: {e}")
+            session.rollback()
+        finally:
+            session.close()
+
+    def get_open_positions(self) -> List:
+        """Получает все открытые позиции."""
+        return self.database.get_open_positions()
+
+    def get_position_by_market(self, market_id: str, outcome: str) -> Optional:
+        """Находит открытую позицию по рынку и исходу."""
+        open_positions = self.get_open_positions()
+        
+        logger.debug(f"Поиск позиции: market={market_id[:8]}... outcome={outcome} среди {len(open_positions)} открытых")
+        
+        for pos in open_positions:
+            logger.debug(f"  Сравниваю: {pos.market_id[:8]}... {pos.outcome} vs {market_id[:8]}... {outcome}")
+            
+            if pos.market_id == market_id and pos.outcome == outcome:
+                logger.debug(f"  ✅ Найдено совпадение! PosID={pos.id}")
+                return pos
+        
+        logger.debug(f"  ❌ Совпадений не найдено")
+        return None
+
+    def update_positions_with_current_prices(self):
+        """Обновляет текущие цены для открытых позиций."""
+        pass
+
+    def get_statistics(self) -> Dict:
+        """
+        Получает статистику по всем позициям.
+        """
+        all_positions = self.database.get_all_positions()
+        closed_positions = [p for p in all_positions if p.status == 'closed']
+        open_positions = [p for p in all_positions if p.status == 'open']
+
+        total_pnl = sum(p.pnl or 0 for p in closed_positions)
+        winning_trades = len([p for p in closed_positions if (p.pnl or 0) > 0])
+        losing_trades = len([p for p in closed_positions if (p.pnl or 0) < 0])
+        win_rate = (winning_trades / len(closed_positions) * 100) if closed_positions else 0
+
+        return {
+            'total_positions': len(all_positions),
+            'open_positions': len(open_positions),
+            'closed_positions': len(closed_positions),
+            'total_pnl': float(total_pnl),
+            'win_rate': win_rate,
+            'winning_trades': winning_trades,
+            'losing_trades': losing_trades
         }

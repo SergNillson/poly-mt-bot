@@ -16,10 +16,10 @@ class PolymarketAPIClient:
     Класс для взаимодействия с Polymarket API.
     """
     
-    # API endpoints (ИСПРАВЛЕНО)
+    # API endpoints
     BASE_URL = "https://clob.polymarket.com"
     GAMMA_API = "https://gamma-api.polymarket.com"
-    DATA_API = "https://data-api.polymarket.com"  # Новый endpoint для trades
+    DATA_API = "https://data-api.polymarket.com"
     
     def __init__(self):
         """Инициализация API клиента."""
@@ -30,32 +30,66 @@ class PolymarketAPIClient:
     
     def get_trader_trades(self, trader_address: str, limit: int = 100) -> List[Dict]:
         """
-        Получает последние сделки трейдера.
+        Получает последние активности трейдера (trades, positions, resolves).
         
         Args:
             trader_address: Адрес кошелька трейдера
-            limit: Максимальное количество сделок
+            limit: Максимальное количество активностей
             
         Returns:
-            Список сделок трейдера
+            Список активностей трейдера
         """
         try:
-            # ИСПРАВЛЕНО: используем data-api вместо gamma-api
-            url = f"{self.DATA_API}/trades"
+            # ✅ Используем /activity вместо /trades
+            url = f"{self.DATA_API}/activity"
             params = {
-                'maker': trader_address,
-                'limit': limit
+                'user': trader_address.lower(),
+                'limit': limit,
+                'sortBy': 'TIMESTAMP',
+                'sortDirection': 'DESC'
             }
+            
+            logger.debug(f"Запрос: {url} с параметрами {params}")
             
             response = self.session.get(url, params=params, timeout=10)
             response.raise_for_status()
             
-            trades = response.json()
-            logger.info(f"Получено {len(trades)} сделок для трейдера {trader_address[:8]}...")
-            return trades
+            activities = response.json()
+            
+            logger.info(f"Получено {len(activities)} активностей для трейдера {trader_address[:8]}...")
+            return activities
             
         except requests.exceptions.RequestException as e:
-            logger.error(f"Ошибка при получении сделок: {e}")
+            logger.error(f"Ошибка при получении активностей: {e}")
+            return []
+    
+    def get_trader_positions(self, trader_address: str, condition_id: str = None) -> List[Dict]:
+        """
+        Получает текущие позиции трейдера.
+        
+        Args:
+            trader_address: Адрес кошелька трейдера
+            condition_id: ID рынка (опционально, для фильтрации)
+            
+        Returns:
+            Список позиций трейдера
+        """
+        try:
+            url = f"{self.GAMMA_API}/positions"
+            params = {'user': trader_address.lower()}
+            
+            if condition_id:
+                params['conditionId'] = condition_id
+            
+            response = self.session.get(url, params=params, timeout=10)
+            response.raise_for_status()
+            
+            positions = response.json()
+            logger.debug(f"Получено {len(positions)} позиций для {trader_address[:8]}...")
+            return positions
+            
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Ошибка при получении позиций: {e}")
             return []
     
     def get_market_info(self, market_id: str) -> Optional[Dict]:
@@ -78,8 +112,7 @@ class PolymarketAPIClient:
             logger.debug(f"Получена информация о рынке {market_id}")
             return market_data
             
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Ошибка при получении информации о рынке: {e}")
+        except requests.exceptions.RequestException:
             return None
     
     def get_current_price(self, token_id: str) -> Optional[float]:
@@ -162,29 +195,37 @@ class PolymarketAPIClient:
             logger.error(f"Ошибка при получении активных рынков: {e}")
             return []
     
-    def parse_trade_data(self, trade: Dict) -> Dict:
+    def parse_trade_data(self, activity: Dict) -> Dict:
         """
-        Парсит сырые данные сделки в удобный формат.
+        Парсит сырые данные активности в удобный формат.
         
         Args:
-            trade: Сырые данные сделки от API
+            activity: Сырые данные активности от API (/activity endpoint)
             
         Returns:
-            Обработанные данные сделки
+            Обработанные данные активности
         """
-        # ИСПРАВЛЕНО: новая структура от data-api.polymarket.com
+        activity_type = activity.get('type', 'TRADE')
+        
+        # ✅ Для POSITION_CLOSE определяем side как SELL
+        side = activity.get('side')
+        if activity_type == 'POSITION_CLOSE' and not side:
+            side = 'SELL'
+        
         return {
-            'timestamp': datetime.fromtimestamp(trade.get('timestamp', 0)),
-            'market_id': trade.get('conditionId'),  # ИСПРАВЛЕНО: было 'market'
-            'outcome': trade.get('outcome'),  # YES или NO
-            'size': float(trade.get('size', 0)),
-            'price': float(trade.get('price', 0)),
-            'transaction_hash': trade.get('transactionHash'),  # ИСПРАВЛЕНО: было 'transaction_hash'
-            'maker': trade.get('proxyWallet'),  # ИСПРАВЛЕНО: было 'maker'
-            'side': trade.get('side'),  # BUY или SELL
-            'asset': trade.get('asset'),  # Token ID
-            'title': trade.get('title', 'Unknown Market'),  # Название рынка
-            'slug': trade.get('slug', ''),  # Slug рынка
+            'timestamp': datetime.utcfromtimestamp(activity.get('timestamp', 0)),
+            'market_id': activity.get('conditionId'),
+            'outcome': activity.get('outcome'),
+            'size': float(activity.get('size', 0)),
+            'price': float(activity.get('price', 0)),
+            'transaction_hash': activity.get('transactionHash'),
+            'maker': activity.get('proxyWallet'),
+            'side': side,
+            'asset': activity.get('asset'),
+            'title': activity.get('title', 'Unknown Market'),
+            'slug': activity.get('slug', ''),
+            'type': activity_type,
+            'usdc_size': float(activity.get('usdcSize', 0)),
         }
     
     def is_new_trade(self, trade: Dict, last_check_time: datetime) -> bool:
@@ -198,5 +239,5 @@ class PolymarketAPIClient:
         Returns:
             True если сделка новая
         """
-        trade_time = datetime.fromtimestamp(trade.get('timestamp', 0))
+        trade_time = datetime.utcfromtimestamp(trade.get('timestamp', 0))
         return trade_time > last_check_time
