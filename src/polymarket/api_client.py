@@ -5,7 +5,7 @@
 
 import requests
 from typing import List, Dict, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 import logging
 
 logger = logging.getLogger(__name__) 
@@ -27,6 +27,7 @@ class PolymarketAPIClient:
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         })
+        logger.info("PolymarketAPIClient инициализирован")
     
     def get_trader_trades(self, trader_address: str, limit: int = 100) -> List[Dict]:
         """
@@ -56,7 +57,7 @@ class PolymarketAPIClient:
             
             activities = response.json()
             
-            logger.info(f"Получено {len(activities)} активностей для трейдера {trader_address[:8]}...")
+            logger.info(f"✅ Получено {len(activities)} активностей для {trader_address[:10]}...")
             return activities
             
         except requests.exceptions.RequestException as e:
@@ -212,8 +213,12 @@ class PolymarketAPIClient:
         if activity_type == 'POSITION_CLOSE' and not side:
             side = 'SELL'
         
+        # ✅ ИСПРАВЛЕНО: Парсим timestamp с UTC timezone
+        timestamp_raw = activity.get('timestamp', 0)
+        timestamp = datetime.fromtimestamp(timestamp_raw, tz=timezone.utc)
+        
         return {
-            'timestamp': datetime.utcfromtimestamp(activity.get('timestamp', 0)),
+            'timestamp': timestamp,
             'market_id': activity.get('conditionId'),
             'outcome': activity.get('outcome'),
             'size': float(activity.get('size', 0)),
@@ -239,5 +244,5 @@ class PolymarketAPIClient:
         Returns:
             True если сделка новая
         """
-        trade_time = datetime.utcfromtimestamp(trade.get('timestamp', 0))
+        trade_time = datetime.fromtimestamp(trade.get('timestamp', 0), tz=timezone.utc)
         return trade_time > last_check_time
